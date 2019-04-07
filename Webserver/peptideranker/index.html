@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
+
+<?php session_start(); ?>
+
+<html lang="en"><!--<![endif]--> 
+	<head>
+		<meta charset="utf-8">
+		<title color="#FFFFFF">Dashboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/site.css" rel="stylesheet">
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<link rel="icon" href="img/logo.ico" type="image/x-ico" />
+		
+	</head>
+	<body class="Index">
+	<div class="container">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">Antifungal peptide prediction</a>
+					<div class="nav-collapse">
+		<ul class="nav">
+			<li class="active"><a href="index.html">Dashboard</a></li>
+			<li><a href="get_datasets.html">Get datasets</a></li>
+			<li><a href="learn_more.htm">Learn more</a></li>			
+		</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span3">
+				<div class="well" style="padding: 8px 0;">
+				<ul class="nav nav-list">
+					<li class="nav-header">Antifungal peptide Prediction</li>
+					<li class="active"><a href="index.html"><i class="icon-white icon-home"></i> Dashboard</a></li>
+					<li><a href="get_datasets.html"><i class="icon-folder-open"></i> Get Datasets</a></li>	
+					<li><a href="learn_more.htm"><i class="icon-envelope"></i> Learn More</a></li>
+					<li class="divider"></li>		
+					<li><a href="predict_peptide.htm"><i class="icon-info-sign"></i> Predict Peptide </a></li>					
+				</ul>
+				</div>
+			</div>
+		<div class="span9">
+			<h1>Dashboard</h1>
+			<div class="hero-unit">
+				<h1>Welcome!</h1>
+				<p>To start your peptide prediction, and know something about the web!</p>
+				<p><a href="predict_peptide.htm" class="btn btn-primary btn-large">Predict Peptide</a> <a class="btn btn-large">No Thanks</a></p>
+			</div>
+		</div>
+		</div>
+	</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/site.js"></script>
+	</body>
+</html>

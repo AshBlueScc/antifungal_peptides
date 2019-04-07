@@ -1,0 +1,12 @@
+https://lisda.ucd.ie/peptideranker/
+
+/var/www/html/peptideranker$ index.html
+
+/usr/lib/cgi-bin$
+
+
+
+
+Another example of a webserver:
+http://bioware.ucd.ie/~compass/biowareweb/Server_pages/cpppred.php
+

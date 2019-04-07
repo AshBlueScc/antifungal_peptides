@@ -1,0 +1,177 @@
+#!/usr/bin/perl
+use CGI qw(param);
+
+$CGI::POST_MAX = 1100000;
+$CGI::DISABLE_UPLOADS = 1;
+
+$now = time;
+$ora=localtime;
+
+$currentID = $now.$$;
+
+#$email = param("email_address");
+$sequence = param("input_text");
+$sequence = uc $sequence;
+$porter = 1;
+$paleale = 0;
+
+$base = '/usr/lib/cgi-bin';
+
+
+$bases = '/usr/lib/cgi-bin/temp/';
+$log = ($bases.'log_peptides.txt');
+$errorsf = ($bases.'errors_peptides.txt');
+$debug = ($bases.'debug_peptides.txt');
+$signature = ($bases.'pleasecite_peptides.txt');
+$execs = '/usr/lib/cgi-bin/peptideranker';
+
+$query_error="";
+$query_error .= "Name:  PeptideRanker\n";
+$query_error .= "Query: $sequence\n";
+#$query_error .= "Email: $email\n";
+$query_error .= "Preds: PeptideRanker\n\n";
+
+if (length($sequence)>65536) {
+  print <<END_of_toolong;
+Content-type: text/html
+
+  <html>
+  <head>
+  <title>PeptideRanker error</title>
+  </head>
+  <body>
+<font face="Arial, Helvetica, sans-serif">
+  <h2>PeptideRanker</h2>
+  <p>
+  Total query size greater than 64kbytes. Please send your queries in smaller chunks.
+  </body>
+  </html>
+END_of_toolong
+open(erro,">>$errorsf");
+print erro "Time: $ora\n";
+print erro "Err: toolong\n";
+print erro $query_error;
+close erro;
+
+  exit;
+
+}
+
+# IF OBVIOUS PROBLEMS, JUST BOUNCE IT
+
+
+# NO QUERY
+if ($sequence eq "") {
+  print <<END_of_missingquery;
+Content-type: text/html
+
+  <html>
+  <head>
+  <title>PeptideRanker error</title>
+  </head>
+  <body>
+<font face="Arial, Helvetica, sans-serif">
+  <h2>PeptideRanker</h2>
+  <p>
+  Sorry, you must provide a query
+  <p>
+  </body>
+  </html>
+END_of_missingquery
+
+#system("echo \$PATH");
+
+open(erro,">>$errorsf");
+print erro "Time: $ora\n";
+print erro "Err: noquery\n";
+print erro $query_error;
+close erro;
+
+  exit;
+}
+
+
+
+# Checking sequence
+$sequence =~ s/\t//g;
+$sequence =~ s/ //g;
+
+$pid = $currentID;
+$query="$bases$pid";
+
+open(queryfile,">$query");
+print queryfile "$sequence\n";
+close queryfile;
+
+$outputfile = "$query.out";
+
+$call_cpppred = "$execs/PeptideRanker.pl $query $outputfile";
+system($call_cpppred);
+
+open(erro,">>$log");
+print erro "$call_cpppred\n";
+close erro;
+
+
+
+
+open(re,"<$outputfile");
+@text_output = <re>;
+close re;
+
+open(erro,">>$log");
+print erro "$outputfile\n";
+close erro;
+
+
+print <<END_of_Temp;
+Content-type: text/html
+
+<html>
+<head>
+<title>PeptideRanker response</title>
+</head>
+<body>
+<font face="Arial, Helvetica, sans-serif">
+
+<h2>PeptideRanker</h2>
+<p>
+END_of_Temp
+
+print "Your query (ID $currentID) has been processed<br><br>";
+
+print "Response:<br>\n<pre>\n";
+
+while (@text_output) {
+	$line = shift @text_output;
+	$line =~ s/ /\t/g;
+	print $line;
+}
+
+print <<END_2;
+</body>
+</html>
+END_2
+
+system("rm $bases$pid* $log");
+
+exit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

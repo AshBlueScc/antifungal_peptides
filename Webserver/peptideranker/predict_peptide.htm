@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en"><!--<![endif]--> 
+	<head>
+		<meta charset="utf-8">
+		<title>Predict Peptide</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/site.css" rel="stylesheet">
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<link rel="icon" href="img/logo.ico" type="image/x-ico" />
+	</head>
+	<body class="Index">
+	<div class="container">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">Antifungal peptide prediction</a>
+					<div class="nav-collapse">
+		<ul class="nav">
+			<li class="active"><a href="index.html">Dashboard</a></li>
+			<li><a href="get_datasets.html">Get datasets</a></li>
+			<li><a href="learn_more.htm">Learn more</a></li>			
+		</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span3">
+				<div class="well" style="padding: 8px 0;">
+				<ul class="nav nav-list">
+					<li class="nav-header">Antifungal peptide Prediction</li>
+					<li class="active"><a href="index.html"><i class="icon-white icon-home"></i> Dashboard</a></li>
+					<li><a href="get_datasets.html"><i class="icon-folder-open"></i> Get Datasets</a></li>	
+					<li><a href="learn_more.htm"><i class="icon-envelope"></i> Learn More</a></li>
+					<li class="divider"></li>	
+					<li><a href="predict_peptide.htm"><i class="icon-info-sign"></i> Predict Peptide </a></li>					
+				</ul>
+				</div>
+			</div>
+			<div class="span9">
+				<h1>Predict Peptide</h1>
+				<div class="hero-unit">
+					<form class="navbar-search pull-left" METHOD="POST" ACTION="https://lisda.ucd.ie/cgi-bin/predict_peptideranker"><textarea class="form-control" rows="4"></textarea></form>			
+					<p><a href="predict.htm" class="btn btn-primary btn-lg">Predict Peptide</a><span class="label" style="width:0px;height:22px;display:inline-block;overflow:hidden;"></span></p>			
+				</div>	
+				<h4 style="color:blue">Descreption</h4>
+				<p>
+					Antifungal peptide prediction is a server for the prediction of Antifungal peptide based on a novel N-to-1 neural network
+					ranks peptide(s) by the predicted probability that the peptide will be bioactive.Antifungal peptide prediction aims to determine for a set of peptides how likely each of them is bioactive to be Antifungal peptide.
+					The peptides can simply be entered into the text box, and will be ranked according to their Antifungal peptide prediction score.			
+				</p>
+				<h4 style="color:blue">Input</h4>
+				<p>
+					Peptides (up to 64kbytes)(1-letter code, each peptide on a separate line)
+				</p>
+				<h4 style="color:blue">Output</h4>
+				<p>
+					A ranked list of the input peptides, scored by Antifungal peptide prediction. The score, between 0 and 1, is not a prediction of the degree of antifungal ability but a prediction of how likely the peptide is to be 
+					bioactive. A score above 0.5 suggests that the peptide is bioactive. Scores closer to 1 indicate that Antifungal peptide prediction is more confident that the peptide will be bioactive and scores closer 
+					to 0 suggests that the peptide is very unlikely to be bioactiove. 
+				</p>
+			</div>
+		</div>
+	</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/site.js"></script>
+	</body>
+</html>
