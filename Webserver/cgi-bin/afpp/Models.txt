@@ -1,0 +1,7 @@
+5
+/usr/lib/cgi-bin/afpp/Models/fold0/trained--20.model
+/usr/lib/cgi-bin/afpp/Models/fold1/trained--20.model
+/usr/lib/cgi-bin/afpp/Models/fold2/trained--20.model
+/usr/lib/cgi-bin/afpp/Models/fold3/trained--20.model
+/usr/lib/cgi-bin/afpp/Models/fold4/trained--20.model
+
